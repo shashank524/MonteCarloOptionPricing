@@ -11,14 +11,14 @@ size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* out
 int main() {
     CURL* curl;
     CURLcode res;
-    std::string url = "https://api.example.com/historical-data?symbol=XYZ&start_date=2022-01-01&end_date=2022-12-31";
+    std::string url = "https://query1.finance.yahoo.com/v7/finance/download/XYZ?period1=1640995200&period2=1672444800&interval=1d&events=history";
     std::string response;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
 
     if (curl) {
-        // Set the URL to fetch historical data from
+        // Set the URL to fetch historical data from Yahoo Finance
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
         // Set the callback function to receive the response
